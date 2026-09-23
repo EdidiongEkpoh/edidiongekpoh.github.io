@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Edidiong Ekpoh | Data Analyst</title>
+  <meta name="description" content="Data analyst building end-to-end data projects">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F2F4F3;
+      --surface: #FFFFFF;
+      --ink: #172431;
+      --ink-soft: #4A5968;
+      --line: #C9D2D9;
+      --accent: #1F6E8C;
+      --accent-soft: #DCEBF1;
+      --live: #2E8A57;
+      --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+      --body: "Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --paper: #121A21;
+        --surface: #1A242D;
+        --ink: #E6ECF0;
+        --ink-soft: #A3B1BD;
+        --line: #33424F;
+        --accent: #6BB8D6;
+        --accent-soft: #1D3441;
+        --live: #5CC48A;
+      }
+    }
+    :root[data-theme="dark"] {
+      --paper: #121A21;
+      --surface: #1A242D;
+      --ink: #E6ECF0;
+      --ink-soft: #A3B1BD;
+      --line: #33424F;
+      --accent: #6BB8D6;
+      --accent-soft: #1D3441;
+      --live: #5CC48A;
+    }
+
+    *, *::before, *::after { box-sizing: inherit; }
+    html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .wrap { max-width: 68rem; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Header */
+    .site-head {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.5rem 0;
+    }
+    .site-head .mark { font-family: var(--display); font-weight: 700; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
+    .site-head nav { display: flex; gap: 1.5rem; }
+    .site-head nav a { color: var(--ink-soft); text-decoration: none; font-weight: 500; }
+    .site-head nav a:hover { color: var(--ink); }
+
+    /* Hero */
+    .hero { padding: 4rem 0 3.5rem; border-bottom: 1px solid var(--line); }
+    .hero h1 {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(2.6rem, 7vw, 5.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      margin: 0 0 1.5rem;
+      max-width: 14ch;
+    }
+    .hero p { max-width: 38rem; color: var(--ink-soft); font-size: 1.2rem; margin: 0 0 2rem; }
+    .hero-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .btn {
+      display: inline-block; padding: 0.7rem 1.2rem; border-radius: 6px;
+      font-weight: 600; text-decoration: none; font-size: 0.98rem;
+    }
+    .btn-primary { background: var(--ink); color: var(--paper); }
+    .btn-primary:hover { background: var(--accent); }
+    .btn-plain { color: var(--ink); border: 1px solid var(--line); background: var(--surface); }
+    .btn-plain:hover { border-color: var(--ink-soft); }
+
+    /* Sections */
+    section { padding: 4rem 0; }
+    h2 {
+      font-family: var(--display); font-weight: 700;
+      font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+      letter-spacing: -0.02em; line-height: 1.1;
+      margin: 0 0 0.6rem;
+    }
+    .section-intro { color: var(--ink-soft); max-width: 38rem; margin: 0 0 2.5rem; }
+
+    /* Projects */
+    .project {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      margin-bottom: 2rem;
+    }
+    .project-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: baseline; }
+    .project h3 {
+      font-family: var(--display); font-weight: 700;
+      font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+      letter-spacing: -0.015em; line-height: 1.15; margin: 0;
+    }
+    .status { font-size: 0.9rem; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 0.45rem; }
+    .status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--live); }
+    .question { font-size: 1.15rem; font-style: italic; color: var(--ink); margin: 0.9rem 0 0.8rem; max-width: 44rem; }
+    .project > p { max-width: 44rem; color: var(--ink-soft); margin: 0 0 1.75rem; }
+
+    /* Pipeline strip: the signature element */
+    .pipeline { margin: 0 0 1.75rem; }
+    .stages {
+      list-style: none; margin: 0; padding: 0;
+      display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+      gap: 1.6rem;
+    }
+    .stage {
+      position: relative;
+      background: var(--accent-soft);
+      border-radius: 8px;
+      padding: 0.75rem 0.85rem;
+      min-width: 0;
+    }
+    .stage:not(:last-child)::after {
+      content: "";
+      position: absolute; top: 50%; right: -1.45rem;
+      width: 1.3rem; height: 2px; background: var(--accent);
+    }
+    .stage:not(:last-child)::before {
+      content: "";
+      position: absolute; top: calc(50% - 4px); right: -1.5rem;
+      border-left: 7px solid var(--accent);
+      border-top: 5px solid transparent; border-bottom: 5px solid transparent;
+    }
+    .stage-role { display: block; font-size: 0.8rem; color: var(--ink-soft); margin-bottom: 0.15rem; }
+    .stage-tool { display: block; font-weight: 600; font-size: 0.95rem; line-height: 1.3; overflow-wrap: anywhere; }
+    .orchestrator {
+      margin-top: 0.7rem; padding-top: 0.55rem;
+      border-top: 2px dashed var(--line);
+      font-size: 0.9rem; color: var(--ink-soft);
+    }
+    .orchestrator strong { color: var(--ink); font-weight: 600; }
+
+    .highlights { margin: 0 0 1.75rem; padding-left: 1.2rem; max-width: 46rem; }
+    .highlights li { margin-bottom: 0.55rem; }
+    .highlights li::marker { color: var(--accent); }
+
+    .project-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .project-links a {
+      font-weight: 600; font-size: 0.95rem; text-decoration: none;
+      padding: 0.5rem 0.95rem; border-radius: 6px;
+      border: 1px solid var(--line); color: var(--ink);
+    }
+    .project-links a:hover { border-color: var(--accent); color: var(--accent); }
+    .project-links a.main { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .project-links a.main:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+
+    /* Toolkit */
+    .toolkit { border-top: 1px solid var(--line); }
+    .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 2rem 2.5rem; }
+    .tool-grid h3 { font-family: var(--display); font-weight: 700; font-size: 1.1rem; margin: 0 0 0.4rem; }
+    .tool-grid p { margin: 0; color: var(--ink-soft); }
+
+    /* Contact */
+    .contact { border-top: 1px solid var(--line); }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+
+    footer { padding: 2rem 0 3rem; color: var(--ink-soft); font-size: 0.9rem; }
+
+    @media (max-width: 760px) {
+      .site-head nav { gap: 1rem; font-size: 0.95rem; }
+      .hero { padding: 2.5rem 0; }
+      section { padding: 3rem 0; }
+      .stages { grid-auto-flow: row; grid-auto-columns: auto; gap: 1.3rem; }
+      .stage:not(:last-child)::after { top: auto; bottom: -1.2rem; right: auto; left: 1.4rem; width: 2px; height: 1.1rem; }
+      .stage:not(:last-child)::before {
+        top: auto; bottom: -1.3rem; right: auto; left: calc(1.4rem - 4px);
+        border-left: 5px solid transparent; border-right: 5px solid transparent;
+        border-top: 7px solid var(--accent); border-bottom: 0;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-head">
+      <a class="mark" href="#top">Edidiong Ekpoh</a>
+      <nav aria-label="Main">
+        <a href="#projects">Projects</a>
+        <a href="#toolkit">Toolkit</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <div class="hero">
+        <h1>Edidiong Ekpoh's Portfolio</h1>
+        <p>Hi, I'm Edidiong! I'm a Data Analyst that enjoys making end-to-end data projects. See some of my most recent ones below!</p>
+        <div class="hero-links">
+          <a class="btn btn-primary" href="#projects">See the projects</a>
+          <a class="btn btn-plain" href="https://github.com/EdidiongEkpoh">GitHub</a>
+          <a class="btn btn-plain" href="https://www.linkedin.com/in/edidiongekpoh/">LinkedIn</a>
+        </div>
+      </div>
+
+      <section id="projects" aria-labelledby="projects-title">
+        <h2 id="projects-title">Projects</h2>
+        <p class="section-intro">The strip under each project highlights its important details.</p>
+
+        <article class="project" aria-labelledby="p-nyc">
+          <div class="project-top">
+            <h3 id="p-nyc">NYC 311 Service Requests</h3>
+            <span class="status"><span class="dot" aria-hidden="true"></span>Updates daily</span>
+          </div>
+          <p class="question">What drives response time and complaint volume across New York City?</p>
+          <p>An analysis of NYC's 311 requests, from noise complaints to broken heat, looking at whether response speed varies by borough and community board, and which volume patterns are seasonal versus genuine trends.</p>
+
+          <div class="pipeline">
+            <ol class="stages" aria-label="NYC 311 data pipeline">
+              <li class="stage"><span class="stage-role">Source</span><span class="stage-tool">NYC Open Data (Socrata)</span></li>
+              <li class="stage"><span class="stage-role">Ingest</span><span class="stage-tool">Python</span></li>
+              <li class="stage"><span class="stage-role">Store</span><span class="stage-tool">Partitioned Parquet</span></li>
+              <li class="stage"><span class="stage-role">Model</span><span class="stage-tool">dbt + DuckDB</span></li>
+              <li class="stage"><span class="stage-role">Serve</span><span class="stage-tool">Evidence on GitHub Pages, Tableau</span></li>
+            </ol>
+            <p class="orchestrator">Scheduled and tested by <strong>GitHub Actions</strong>: daily ingestion and dbt build on every push</p>
+          </div>
+
+          <ul class="highlights">
+            <li>Monthly checkpoints to eliminate large backfills.</li>
+            <li>Tests split by severity. Duplicate or null keys fail the build, like close dates before open dates, raise warnings.</li>
+            <li>The dashboard only after the data passes dbt build/tests. A freshness check confirms the daily job is still running.</li>
+          </ul>
+
+          <div class="project-links">
+            <a class="main" href="https://public.tableau.com/app/profile/edidiong.ekpoh8227/viz/NYC311_Analytics/NYC311ServiceRequestsDashboard">Live dashboard</a>
+            <a href="https://github.com/EdidiongEkpoh/NYC-311-Analytics">Code</a>
+          </div>
+        </article>
+
+        <!-- Hoop Analytics -->
+        <article class="project" aria-labelledby="p-hoop">
+          <div class="project-top">
+            <h3 id="p-hoop">Hoop Analytics</h3>
+            <span class="status"><span class="dot" aria-hidden="true"></span>Refreshes daily</span>
+          </div>
+          <p class="question">How do NBA teams and players really compare, once you control for pace and playing time?</p>
+          <p>A four-page NBA dashboard covering league overview, team profiles, player profiles, and head-to-head comparisons across seasons, backed by a containerized warehouse that refreshes every day.</p>
+
+          <div class="pipeline">
+            <ol class="stages" aria-label="Hoop Analytics data pipeline">
+              <li class="stage"><span class="stage-role">Source</span><span class="stage-tool">nba_api</span></li>
+              <li class="stage"><span class="stage-role">Ingest</span><span class="stage-tool">Python, pandas, SQLAlchemy</span></li>
+              <li class="stage"><span class="stage-role">Store</span><span class="stage-tool">PostgreSQL</span></li>
+              <li class="stage"><span class="stage-role">Model</span><span class="stage-tool">dbt</span></li>
+              <li class="stage"><span class="stage-role">Serve</span><span class="stage-tool">Streamlit</span></li>
+            </ol>
+            <p class="orchestrator">Orchestrated by <strong>Apache Airflow</strong>, all services run in <strong>Docker Compose</strong></p>
+          </div>
+
+          <ul class="highlights">
+            <li>Includes player shart charts, plus shot-type splits for catch-and-shoot, pull-ups, drives, and post-ups.</li>
+            <li>Every stat line switches between per game, per 36 minutes, and per 75/100 possessions, with percentile badges against respective season/league.</li>
+            <li>Team profiles break down the Four Factors on offense and defense with league-rank badges and a rolling net rating visual.</li>
+          </ul>
+
+          <div class="project-links">
+            <a class="main" href="https://github.com/EdidiongEkpoh/Hoop-Analytics">Code and project summary</a>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="p-yt">
+          <div class="project-top">
+            <h3 id="p-yt">Sports YouTube Analytics</h3>
+            <span class="status">Manual refresh</span>
+          </div>
+          <p class="question">What publishing patterns and content choices drive views and engagement on niche sports channels?</p>
+          <p>A study of five sports analysis channels, including Thinking Basketball and Hoop Intellect, comparing upload timing, video length, and title style against views and engagement.</p>
+
+          <div class="pipeline">
+            <ol class="stages" aria-label="Sports YouTube data pipeline">
+              <li class="stage"><span class="stage-role">Source</span><span class="stage-tool">YouTube Data API v3</span></li>
+              <li class="stage"><span class="stage-role">Ingest</span><span class="stage-tool">Python extraction</span></li>
+              <li class="stage"><span class="stage-role">Transform</span><span class="stage-tool">Python, TextBlob</span></li>
+              <li class="stage"><span class="stage-role">Store</span><span class="stage-tool">BigQuery + Google Drive</span></li>
+              <li class="stage"><span class="stage-role">Serve</span><span class="stage-tool">Tableau Public</span></li>
+            </ol>
+          </div>
+
+          <ul class="highlights">
+            <li>Engineered title features such as sentiment, word count, and whether a title asks a question, uses a number, or frames a "vs" matchup.</li>
+            <li>Kept raw pulls timestamped and append-only, separate from rebuilt "current state" tables, so every snapshot stays reproducible.</li>
+            <li>Worked around Tableau Public's connector limits by exporting curated data to Google Drive through OAuth.</li>
+          </ul>
+
+          <div class="project-links">
+            <a class="main" href="https://public.tableau.com/app/profile/edidiong.ekpoh8227/viz/YouTube_Analytics/YouTubeAnalytics">Live dashboard</a>
+            <a href="https://github.com/EdidiongEkpoh/YouTube">Code</a>
+          </div>
+        </article>
+      </section>
+
+      <section id="toolkit" class="toolkit" aria-labelledby="toolkit-title">
+        <h2 id="toolkit-title">Toolkit</h2>
+        <p class="section-intro">What I've used across these projects, grouped by each phase of the project.</p>
+        <div class="tool-grid">
+          <div><h3>Extraction</h3><p>Python, pandas, SQLAlchemy, REST APIs (Socrata, YouTube, nba_api)</p></div>
+          <div><h3>Storage</h3><p>PostgreSQL, BigQuery, DuckDB, Parquet</p></div>
+          <div><h3>Modeling and testing</h3><p>SQL, dbt</p></div>
+          <div><h3>Orchestration</h3><p>Apache Airflow, GitHub Actions, Docker</p></div>
+          <div><h3>Visualization</h3><p>Tableau, Streamlit</p></div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Get in touch</h2>
+        <p class="section-intro">I'm open to data analyst and analytics engineering roles. Feel free to email me and/or connect with me on LinkedIn!</p>
+        <div class="contact-links">
+          <a class="btn btn-primary" href="euekpoh@gmail.com">Email</a>
+          <a class="btn btn-plain" href="https://github.com/EdidiongEkpoh">GitHub</a>
+          <a class="btn btn-plain" href="https://www.linkedin.com/in/edidiongekpoh/">LinkedIn</a>
+          <a class="btn btn-plain" href="https://public.tableau.com/app/profile/edidiong.ekpoh8227">Tableau Public</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Built via GitHub Pages.</p>
+    </footer>
+  </div>
+</body>
+</html>
